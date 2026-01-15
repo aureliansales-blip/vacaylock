@@ -1,0 +1,74 @@
+const features = [
+  {
+    icon: '🎯',
+    title: 'Automatic Access Codes',
+    description: 'Your guests receive unique access codes automatically when they book. Codes expire after checkout—no manual work required.',
+  },
+  {
+    icon: '🔗',
+    title: 'Seamless Integration',
+    description: 'Direct integration with Airbnb, VRBO, and major booking platforms. Everything syncs automatically.',
+  },
+  {
+    icon: '📲',
+    title: 'Remote Management',
+    description: 'Control your locks from anywhere. Grant access to cleaners, contractors, or yourself—all from your phone.',
+  },
+  {
+    icon: '🛡️',
+    title: 'Enhanced Security',
+    description: 'Time-limited codes, activity logs, and instant notifications. Know exactly who enters and when.',
+  },
+  {
+    icon: '⚡',
+    title: 'Fast Implementation',
+    description: 'Most setups completed in 24 hours. We handle all the technical complexity remotely—no on-site visit needed.',
+  },
+  {
+    icon: '🎓',
+    title: 'Training Included',
+    description: 'Complete walkthrough and documentation so you\'re confident managing your system.',
+  },
+];
+
+export default function Solution() {
+  return (
+    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-primary to-primary-dark text-white relative overflow-hidden">
+      {/* Background pattern */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='grid' width='100' height='100' patternUnits='userSpaceOnUse'%3E%3Cpath d='M 100 0 L 0 0 0 100' fill='none' stroke='white' stroke-width='1'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23grid)'/%3E%3C/svg%3E")`,
+        }} />
+      </div>
+      
+      <div className="max-w-7xl mx-auto relative z-10">
+        <div className="max-w-4xl mx-auto text-center mb-16">
+          <div className="text-accent font-bold text-sm uppercase tracking-wider mb-4">
+            The Solution
+          </div>
+          <h2 className="font-display text-4xl sm:text-5xl font-extrabold mb-6 leading-tight">
+            We Handle Everything So You Don't Have To
+          </h2>
+          <p className="text-xl text-white/90">
+            Professional smart lock setup and configuration done 100% remotely in under 24 hours
+          </p>
+        </div>
+        
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {features.map((feature, index) => (
+            <div
+              key={index}
+              className="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/20 hover:bg-white/15 transition-all duration-300 hover:-translate-y-2"
+            >
+              <div className="text-5xl mb-4">{feature.icon}</div>
+              <h3 className="font-display text-xl font-bold mb-3">
+                {feature.title}
+              </h3>
+              <p className="text-white/90 leading-relaxed">{feature.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
