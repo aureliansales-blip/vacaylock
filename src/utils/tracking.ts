@@ -28,8 +28,11 @@ export const trackServiceClick = (serviceName: string) => {
 // Track when user navigates to external link (Fiverr)
 export const trackFiverrClick = () => {
   if (typeof window !== 'undefined' && window.gtag) {
-    window.gtag('event', 'fiverr_click_get_started', {
-      'send_to': 'AW-17878920558',
+    // Send conversion event to Google Ads with proper conversion label
+    window.gtag('event', 'conversion', {
+      'send_to': 'AW-17878920558/_f18CPqJueYbEO7aqs1C',
+      'value': 149.0,
+      'currency': 'USD'
     });
   }
 };
