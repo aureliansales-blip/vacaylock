@@ -1,3 +1,5 @@
+import { trackServiceClick, trackFiverrClick } from '../utils/tracking';
+
 const services = [
   {
     name: 'Essential',
@@ -108,6 +110,12 @@ export default function Services() {
                 href={service.href}
                 target={service.href.startsWith('http') ? '_blank' : undefined}
                 rel={service.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                onClick={() => {
+                  trackServiceClick(service.name);
+                  if (service.href.includes('fiverr')) {
+                    trackFiverrClick();
+                  }
+                }}
                 className="block w-full text-center bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/30"
               >
                 {service.cta} →
