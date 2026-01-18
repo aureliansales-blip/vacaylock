@@ -2,63 +2,46 @@ import { trackServiceClick, trackFiverrClick } from '../utils/tracking';
 
 const services = [
   {
-    name: 'Single Lock Setup',
-    tagline: 'Perfect for getting started',
-    price: '$100',
-    priceNote: '1 smart lock',
+    name: 'Essential',
+    tagline: 'Perfect for single-property hosts',
+    price: '$149',
+    priceNote: 'per lock',
     features: [
-      'Setup 1 smart lock',
-      'Basic configuration',
+      'Complete smart lock setup & configuration',
+      'Airbnb integration with auto code generation',
       'WiFi connection & firmware updates',
-      'Basic instructions',
-      'Email support',
-      '2-day delivery',
+      'Guest access code automation',
+      'Mobile app training & documentation',
+      '30 days of email support',
     ],
     cta: 'Get Started',
     href: 'https://www.fiverr.com/vacaylock',
     popular: false,
   },
   {
-    name: 'Full Property Setup',
-    tagline: 'For complete property automation',
-    price: '$200',
-    priceNote: 'up to 3 locks',
+    name: 'Professional',
+    tagline: 'For serious hosts with multiple properties',
+    price: '$349',
+    priceNote: '3-5 locks',
     features: [
-      'Setup up to 3 smart locks',
-      'Complete configuration',
-      'Platform integration',
-      '30-minute consultation call',
-      'Detailed user manual',
-      '3-day delivery',
+      'Everything in Essential, plus:',
+      'Multi-property smart lock management',
+      'Integration with multiple booking platforms',
+      'Cleaner & maintenance staff access setup',
+      'Advanced automation workflows',
+      'Priority support for 60 days',
     ],
     cta: 'Get Started',
     href: 'https://www.fiverr.com/vacaylock',
     popular: true,
   },
   {
-    name: 'Complete Automation',
-    tagline: 'Full automation for serious hosts',
-    price: '$300',
-    priceNote: 'unlimited locks',
-    features: [
-      'Setup unlimited smart locks',
-      'Full automation workflows',
-      'Multi-platform integration',
-      'Comprehensive training session',
-      'Priority support',
-      '5-day delivery',
-    ],
-    cta: 'Get Started',
-    href: 'https://www.fiverr.com/vacaylock',
-    popular: false,
-  },
-  {
     name: 'Enterprise',
     tagline: 'For property managers & large portfolios',
     price: 'Custom',
-    priceNote: 'project pricing',
+    priceNote: '6+ locks',
     features: [
-      'Custom project scope',
+      'Everything in Professional, plus:',
       'Centralized management dashboard',
       'Team member access controls',
       'Custom integrations & workflows',
@@ -73,20 +56,20 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="services" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-100">
-      <div className="max-w-4xl mx-auto text-center mb-16">
-        <div className="text-primary font-bold text-sm uppercase tracking-wider mb-4">
+    <section id="services" className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-gray-100">
+      <div className="max-w-4xl mx-auto text-center mb-8 sm:mb-12 lg:mb-16">
+        <div className="text-primary font-bold text-sm uppercase tracking-wider mb-3 sm:mb-4">
           Services
         </div>
-        <h2 className="font-display text-4xl sm:text-5xl font-extrabold mb-6 leading-tight">
+        <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-4 sm:mb-6 leading-tight">
           Choose Your Package
         </h2>
-        <p className="text-xl text-gray-600">
+        <p className="text-lg sm:text-xl text-gray-600">
           Professional smart lock setup tailored to your needs
         </p>
       </div>
       
-      <div className="max-w-7xl mx-auto grid lg:grid-cols-4 gap-8">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
         {services.map((service, index) => (
           <div
             key={index}
@@ -99,26 +82,26 @@ export default function Services() {
                 MOST POPULAR
               </div>
             )}
-            <div className="p-8 bg-gradient-to-br from-primary-light/30 to-white border-b border-gray-200">
-              <h3 className="font-display text-3xl font-extrabold text-primary mb-2">
+            <div className="p-5 sm:p-6 lg:p-8 bg-gradient-to-br from-primary-light/30 to-white border-b border-gray-200">
+              <h3 className="font-display text-2xl sm:text-3xl font-extrabold text-primary mb-2">
                 {service.name}
               </h3>
-              <p className="text-gray-600">{service.tagline}</p>
+              <p className="text-sm sm:text-base text-gray-600">{service.tagline}</p>
             </div>
             
-            <div className="p-8">
-              <div className="mb-6">
-                <div className="text-gray-600 text-sm mb-2">{service.priceNote}</div>
-                <div className="font-display text-5xl font-extrabold text-dark">
+            <div className="p-5 sm:p-6 lg:p-8">
+              <div className="mb-4 sm:mb-6">
+                <div className="text-gray-600 text-xs sm:text-sm mb-2">{service.priceNote}</div>
+                <div className="font-display text-4xl sm:text-5xl font-extrabold text-dark">
                   {service.price}
                 </div>
               </div>
               
-              <ul className="space-y-4 mb-8">
+              <ul className="space-y-3 sm:space-y-4 mb-6 sm:mb-8">
                 {service.features.map((feature, idx) => (
-                  <li key={idx} className="flex items-start gap-3 pb-4 border-b border-gray-200 last:border-0">
-                    <span className="text-green-500 text-xl flex-shrink-0 mt-0.5">✓</span>
-                    <span className="text-gray-700">{feature}</span>
+                  <li key={idx} className="flex items-start gap-2 sm:gap-3 pb-3 sm:pb-4 border-b border-gray-200 last:border-0">
+                    <span className="text-green-500 text-lg sm:text-xl flex-shrink-0 mt-0.5">✓</span>
+                    <span className="text-sm sm:text-base text-gray-700">{feature}</span>
                   </li>
                 ))}
               </ul>
@@ -133,7 +116,7 @@ export default function Services() {
                     trackFiverrClick();
                   }
                 }}
-                className="block w-full text-center bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/30"
+                className="block w-full text-center bg-primary hover:bg-primary-dark text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold text-base sm:text-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/30"
               >
                 {service.cta} →
               </a>
