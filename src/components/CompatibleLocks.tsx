@@ -5,11 +5,11 @@ const locks = [
   { logo: '/Kwikset_logo.png', name: 'Kwikset' },
   { logo: '/c4f9967d-243c-4d50-802b-c0befec78196.png', name: 'Level Lock' },
   { logo: '/aqara_logo.svg', name: 'Aqara', invert: true },
-  { logo: '/eufy_logo.svg', name: 'Eufy' },
+  { logo: '/eufy_logo.png', name: 'Eufy' },
   { logo: '/igloohome_logo.svg', name: 'igloohome' },
   { logo: '/ttlock_logo.svg', name: 'TTLock' },
   { logo: '/ultraloq_logo.svg', name: 'Ultraloq' },
-  { logo: '/tedee_logo.svg', name: 'Tedee' },
+  { logo: '/tedee_logo.png', name: 'Tedee' },
   { logo: '/lockly_logo.svg', name: 'Lockly' },
 ];
 
