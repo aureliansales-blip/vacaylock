@@ -4,7 +4,13 @@ const locks = [
   { logo: '/logoSvg.svg', name: 'August' },
   { logo: '/Kwikset_logo.png', name: 'Kwikset' },
   { logo: '/c4f9967d-243c-4d50-802b-c0befec78196.png', name: 'Level Lock' },
-  { logo: '/aqara_logo.svg', name: 'Aqara' },
+  { logo: '/aqara_logo.svg', name: 'Aqara', invert: true },
+  { logo: '/eufy_logo.svg', name: 'Eufy' },
+  { logo: '/igloohome_logo.svg', name: 'igloohome' },
+  { logo: '/ttlock_logo.svg', name: 'TTLock' },
+  { logo: '/ultraloq_logo.svg', name: 'Ultraloq' },
+  { logo: '/tedee_logo.svg', name: 'Tedee' },
+  { logo: '/lockly_logo.svg', name: 'Lockly' },
 ];
 
 export default function CompatibleLocks() {
@@ -22,7 +28,7 @@ export default function CompatibleLocks() {
         </p>
       </div>
       
-      <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+      <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6">
         {locks.map((lock, index) => (
           <div
             key={index}
@@ -32,7 +38,7 @@ export default function CompatibleLocks() {
               <img 
                 src={lock.logo} 
                 alt={`${lock.name} logo`}
-                className="max-h-full max-w-full object-contain"
+                className={`max-h-full max-w-full object-contain ${lock.invert ? 'invert' : ''}`}
               />
             </div>
             <div className="font-display text-sm font-bold text-dark">
