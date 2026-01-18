@@ -60,40 +60,6 @@ export default function Hero() {
                 <span className="text-green-500">✓</span> Airbnb Integration
               </div>
               <div className="bg-gray-100 px-4 py-2 rounded-full text-sm font-medium text-gray-700 flex items-center gap-2">
-                <span class="text-green-500">✓</span> Auto Codes
-              </div>
-              <div className="bg-gray-100 px-4 py-2 rounded-full text-sm font-medium text-gray-700 flex items-center gap-2">
-                <span className="text-green-500">✓</span> Remote Access
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-            <div>
-              <div className="font-display text-4xl font-extrabold text-primary">24hr</div>
-              <div className="text-sm text-gray-600 mt-1">Turnaround</div>
-            </div>
-            <div>
-              <div className="font-display text-4xl font-extrabold text-primary">5★</div>
-              <div className="text-sm text-gray-600 mt-1">Rated Service</div>
-            </div>
-          </div>
-        </div>
-        
-        {/* Visual */}
-        <div className="animate-fade-in animation-delay-400">
-          <div className="bg-white rounded-3xl p-8 shadow-2xl border border-gray-200">
-            <div className="bg-gradient-to-br from-primary-light to-primary-light rounded-2xl h-80 flex items-center justify-center text-8xl animate-float relative overflow-hidden">
-              🔐
-            </div>
-            <div className="flex flex-wrap gap-3 mt-6">
-              <div className="bg-gray-100 px-4 py-2 rounded-full text-sm font-medium text-gray-700 flex items-center gap-2">
-                <span className="text-green-500">✓</span> Airbnb Integration
-              </div>
-              <div className="bg-gray-100 px-4 py-2 rounded-full text-sm font-medium text-gray-700 flex items-center gap-2">
                 <span className="text-green-500">✓</span> Auto Codes
               </div>
               <div className="bg-gray-100 px-4 py-2 rounded-full text-sm font-medium text-gray-700 flex items-center gap-2">
