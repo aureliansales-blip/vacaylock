@@ -34,4 +34,14 @@
   .animation-delay-800 {
     animation-delay: 0.8s;
   }
+  
+  /* Hide scrollbar for carousels */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
 }

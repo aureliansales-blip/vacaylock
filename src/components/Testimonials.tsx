@@ -1,3 +1,5 @@
+import { useState, useEffect } from 'react';
+
 const testimonials = [
   {
     stars: 5,
@@ -20,21 +22,104 @@ const testimonials = [
 ];
 
 export default function Testimonials() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+
+  // Auto-advance carousel on mobile
+  useEffect(() => {
+    if (!isAutoPlaying) return;
+    
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [isAutoPlaying]);
+
+  const goToSlide = (index: number) => {
+    setCurrentIndex(index);
+    setIsAutoPlaying(false);
+  };
+
+  const nextSlide = () => {
+    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+    setIsAutoPlaying(false);
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+    setIsAutoPlaying(false);
+  };
+
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
-      <div className="max-w-4xl mx-auto text-center mb-16">
-        <div className="text-primary font-bold text-sm uppercase tracking-wider mb-4">
+    <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-white">
+      <div className="max-w-4xl mx-auto text-center mb-8 sm:mb-12 lg:mb-16">
+        <div className="text-primary font-bold text-sm uppercase tracking-wider mb-3 sm:mb-4">
           Testimonials
         </div>
-        <h2 className="font-display text-4xl sm:text-5xl font-extrabold mb-6 leading-tight">
+        <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-4 sm:mb-6 leading-tight">
           Trusted by Airbnb Hosts
         </h2>
-        <p className="text-xl text-gray-600">
+        <p className="text-base sm:text-lg lg:text-xl text-gray-600">
           See what our clients say about their experience
         </p>
       </div>
       
-      <div className="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {/* Mobile Carousel */}
+      <div className="lg:hidden max-w-2xl mx-auto">
+        <div className="relative">
+          {/* Testimonial Card */}
+          <div className="bg-gray-100 p-6 sm:p-8 rounded-2xl border-l-4 border-primary min-h-[280px] sm:min-h-[260px]">
+            <div className="text-yellow-500 text-xl mb-4">
+              {'★'.repeat(testimonials[currentIndex].stars)}
+            </div>
+            <p className="text-gray-700 italic leading-relaxed mb-6 text-sm sm:text-base">
+              "{testimonials[currentIndex].text}"
+            </p>
+            <div>
+              <div className="font-semibold text-dark">{testimonials[currentIndex].author}</div>
+              <div className="text-sm text-gray-600">{testimonials[currentIndex].role}</div>
+            </div>
+          </div>
+
+          {/* Navigation Arrows */}
+          <button
+            onClick={prevSlide}
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-white rounded-full p-2 shadow-lg hover:bg-gray-50 transition-colors"
+            aria-label="Previous testimonial"
+          >
+            <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          <button
+            onClick={nextSlide}
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-white rounded-full p-2 shadow-lg hover:bg-gray-50 transition-colors"
+            aria-label="Next testimonial"
+          >
+            <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+
+          {/* Dots Indicator */}
+          <div className="flex justify-center gap-2 mt-6">
+            {testimonials.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => goToSlide(index)}
+                className={`w-2 h-2 rounded-full transition-all ${
+                  index === currentIndex ? 'bg-primary w-6' : 'bg-gray-300'
+                }`}
+                aria-label={`Go to testimonial ${index + 1}`}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Desktop Grid - Hidden on Mobile */}
+      <div className="hidden lg:grid max-w-7xl mx-auto grid-cols-3 gap-8">
         {testimonials.map((testimonial, index) => (
           <div
             key={index}
