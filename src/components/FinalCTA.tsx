@@ -1,3 +1,5 @@
+import { trackFiverrClick, trackGetStartedClick } from '../utils/tracking';
+
 export default function FinalCTA() {
   return (
     <section id="contact" className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-900 to-gray-800 text-white text-center relative overflow-hidden">
@@ -15,6 +17,10 @@ export default function FinalCTA() {
           href="https://www.fiverr.com/vacaylock"
           target="_blank"
           rel="noopener noreferrer"
+          onClick={() => {
+            trackGetStartedClick();
+            trackFiverrClick();
+          }}
           className="inline-block bg-accent hover:bg-accent-dark text-white px-12 py-5 rounded-xl font-semibold text-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-accent/50"
         >
           Get Started Now →

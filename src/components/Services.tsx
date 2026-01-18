@@ -1,45 +1,64 @@
+import { trackServiceClick, trackFiverrClick } from '../utils/tracking';
+
 const services = [
   {
-    name: 'Essential',
-    tagline: 'Perfect for single-property hosts',
-    price: '$149',
-    priceNote: 'per lock',
+    name: 'Single Lock Setup',
+    tagline: 'Perfect for getting started',
+    price: '$100',
+    priceNote: '1 smart lock',
     features: [
-      'Complete smart lock setup & configuration',
-      'Airbnb integration with auto code generation',
+      'Setup 1 smart lock',
+      'Basic configuration',
       'WiFi connection & firmware updates',
-      'Guest access code automation',
-      'Mobile app training & documentation',
-      '30 days of email support',
+      'Basic instructions',
+      'Email support',
+      '2-day delivery',
     ],
     cta: 'Get Started',
     href: 'https://www.fiverr.com/vacaylock',
     popular: false,
   },
   {
-    name: 'Professional',
-    tagline: 'For serious hosts with multiple properties',
-    price: '$349',
-    priceNote: '3-5 locks',
+    name: 'Full Property Setup',
+    tagline: 'For complete property automation',
+    price: '$200',
+    priceNote: 'up to 3 locks',
     features: [
-      'Everything in Essential, plus:',
-      'Multi-property smart lock management',
-      'Integration with multiple booking platforms',
-      'Cleaner & maintenance staff access setup',
-      'Advanced automation workflows',
-      'Priority support for 60 days',
+      'Setup up to 3 smart locks',
+      'Complete configuration',
+      'Platform integration',
+      '30-minute consultation call',
+      'Detailed user manual',
+      '3-day delivery',
     ],
     cta: 'Get Started',
     href: 'https://www.fiverr.com/vacaylock',
     popular: true,
   },
   {
+    name: 'Complete Automation',
+    tagline: 'Full automation for serious hosts',
+    price: '$300',
+    priceNote: 'unlimited locks',
+    features: [
+      'Setup unlimited smart locks',
+      'Full automation workflows',
+      'Multi-platform integration',
+      'Comprehensive training session',
+      'Priority support',
+      '5-day delivery',
+    ],
+    cta: 'Get Started',
+    href: 'https://www.fiverr.com/vacaylock',
+    popular: false,
+  },
+  {
     name: 'Enterprise',
     tagline: 'For property managers & large portfolios',
     price: 'Custom',
-    priceNote: '6+ locks',
+    priceNote: 'project pricing',
     features: [
-      'Everything in Professional, plus:',
+      'Custom project scope',
       'Centralized management dashboard',
       'Team member access controls',
       'Custom integrations & workflows',
@@ -67,7 +86,7 @@ export default function Services() {
         </p>
       </div>
       
-      <div className="max-w-7xl mx-auto grid lg:grid-cols-3 gap-8">
+      <div className="max-w-7xl mx-auto grid lg:grid-cols-4 gap-8">
         {services.map((service, index) => (
           <div
             key={index}
@@ -108,6 +127,12 @@ export default function Services() {
                 href={service.href}
                 target={service.href.startsWith('http') ? '_blank' : undefined}
                 rel={service.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                onClick={() => {
+                  trackServiceClick(service.name);
+                  if (service.href.includes('fiverr')) {
+                    trackFiverrClick();
+                  }
+                }}
                 className="block w-full text-center bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/30"
               >
                 {service.cta} →

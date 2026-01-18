@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { trackGetStartedClick } from '../utils/tracking';
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -31,6 +32,7 @@ export default function Header() {
         </div>
         <a
           href="#contact"
+          onClick={trackGetStartedClick}
           className="bg-primary hover:bg-primary-dark text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/30"
         >
           Get Started

@@ -1,3 +1,5 @@
+import { trackGetStartedClick } from '../utils/tracking';
+
 export default function Hero() {
   return (
     <section className="mt-20 pt-16 pb-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-primary/5 to-accent/10 relative overflow-hidden">
@@ -18,6 +20,7 @@ export default function Hero() {
           <div className="flex flex-wrap gap-4 animate-fade-in-up animation-delay-400">
             <a
               href="#services"
+              onClick={trackGetStartedClick}
               className="bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/30 inline-flex items-center gap-2"
             >
               View Services →

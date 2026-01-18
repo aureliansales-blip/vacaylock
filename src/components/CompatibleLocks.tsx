@@ -1,9 +1,16 @@
 const locks = [
-  { icon: '🔐', name: 'Schlage' },
-  { icon: '🔒', name: 'Yale' },
-  { icon: '🚪', name: 'August' },
-  { icon: '🏠', name: 'Kwikset' },
-  { icon: '🔓', name: 'Level Lock' },
+  { logo: '/schlage-logo-noTag.svg', name: 'Schlage' },
+  { logo: '/logo-new.png', name: 'Yale' },
+  { logo: '/logoSvg.svg', name: 'August' },
+  { logo: '/Kwikset_logo.png', name: 'Kwikset' },
+  { logo: '/c4f9967d-243c-4d50-802b-c0befec78196.png', name: 'Level Lock' },
+  { logo: '/aqara_logo.svg', name: 'Aqara', invert: true },
+  { logo: '/eufy_logo.png', name: 'Eufy' },
+  { logo: '/igloo_logo.svg', name: 'igloohome' },
+  { logo: '/ttlock_logo.png', name: 'TTLock' },
+  { logo: '/ultraloq_logo.svg', name: 'Ultraloq' },
+  { logo: '/tedee_logo.png', name: 'Tedee' },
+  { logo: '/lockly_logo.svg', name: 'Lockly' },
 ];
 
 export default function CompatibleLocks() {
@@ -21,14 +28,20 @@ export default function CompatibleLocks() {
         </p>
       </div>
       
-      <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+      <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6">
         {locks.map((lock, index) => (
           <div
             key={index}
-            className="bg-white p-8 rounded-2xl text-center shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
+            className="bg-white p-6 rounded-2xl text-center shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2 flex flex-col items-center justify-center"
           >
-            <div className="text-5xl mb-4">{lock.icon}</div>
-            <div className="font-display text-lg font-bold text-dark">
+            <div className="h-16 w-full flex items-center justify-center mb-4">
+              <img 
+                src={lock.logo} 
+                alt={`${lock.name} logo`}
+                className={`max-h-full max-w-full object-contain ${lock.invert ? 'invert' : ''}`}
+              />
+            </div>
+            <div className="font-display text-sm font-bold text-dark">
               {lock.name}
             </div>
           </div>
