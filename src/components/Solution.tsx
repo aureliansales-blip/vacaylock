@@ -56,7 +56,19 @@ export default function Solution() {
         
         {/* Mobile: Horizontal Scroll */}
         <div className="md:hidden">
-          <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory px-4 -mx-4 scrollbar-hide">
+          <div 
+            className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory px-4 -mx-4"
+            style={{
+              scrollbarWidth: 'none',
+              msOverflowStyle: 'none',
+              WebkitOverflowScrolling: 'touch'
+            }}
+          >
+            <style jsx>{`
+              div::-webkit-scrollbar {
+                display: none;
+              }
+            `}</style>
             {features.map((feature, index) => (
               <div
                 key={index}
