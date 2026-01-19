@@ -4,7 +4,7 @@ const locks = [
   { logo: '/logoSvg.svg', name: 'August' },
   { logo: '/Kwikset_logo.png', name: 'Kwikset' },
   { logo: '/c4f9967d-243c-4d50-802b-c0befec78196.png', name: 'Level Lock' },
-  { logo: '/aqara_logo.svg', name: 'Aqara', invert: true },
+  { logo: '/aqara_logo.svg', name: 'Aqara' },
   { logo: '/eufy_logo.png', name: 'Eufy' },
   { logo: '/igloo_logo.svg', name: 'igloohome' },
   { logo: '/ttlock_logo.png', name: 'TTLock' },
@@ -28,22 +28,22 @@ export default function CompatibleLocks() {
         </p>
       </div>
       
-      {/* Mobile: Horizontal Scroll */}
+      {/* Mobile: Horizontal Scroll - UPDATED */}
       <div className="md:hidden">
-        <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory px-4 -mx-4 scrollbar-hide">
+        <div className="flex gap-3 overflow-x-auto pb-4 snap-x snap-mandatory px-4 -mx-4 scrollbar-hide">
           {locks.map((lock, index) => (
             <div
               key={index}
-              className="bg-white p-6 rounded-2xl text-center shadow-md min-w-[160px] snap-center flex-shrink-0 flex flex-col items-center justify-center"
+              className="bg-white p-4 rounded-xl text-center shadow-md min-w-[130px] max-w-[130px] snap-center flex-shrink-0 flex flex-col items-center justify-center"
             >
-              <div className="h-16 w-full flex items-center justify-center mb-3">
+              <div className="h-12 w-full flex items-center justify-center mb-2">
                 <img 
                   src={lock.logo} 
                   alt={`${lock.name} logo`}
-                  className={`max-h-full max-w-full object-contain ${lock.invert ? 'invert' : ''}`}
+                  className={`max-h-12 max-w-[90%] object-contain ${lock.invert ? 'invert' : ''}`}
                 />
               </div>
-              <div className="font-display text-sm font-bold text-dark">
+              <div className="font-display text-xs font-bold text-dark line-clamp-1">
                 {lock.name}
               </div>
             </div>
