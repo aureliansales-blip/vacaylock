@@ -1,3 +1,5 @@
+import { useState, useEffect, useRef } from 'react';
+
 const problems = [
   {
     icon: '😰',
@@ -32,6 +34,25 @@ const problems = [
 ];
 
 export default function Problems() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  // Track scroll position to update current index
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+
+    const handleScroll = () => {
+      const scrollPosition = container.scrollLeft;
+      const cardWidth = 280 + 16; // card width + gap
+      const newIndex = Math.round(scrollPosition / cardWidth);
+      setCurrentIndex(newIndex);
+    };
+
+    container.addEventListener('scroll', handleScroll);
+    return () => container.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-white">
       <div className="max-w-4xl mx-auto text-center mb-8 sm:mb-12 lg:mb-16">
@@ -49,18 +70,12 @@ export default function Problems() {
       {/* Mobile: Horizontal Scroll */}
       <div className="md:hidden">
         <div 
-          className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory px-4 -mx-4"
+          ref={scrollContainerRef}
+          className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory px-4 -mx-4 scrollbar-hide"
           style={{
-            scrollbarWidth: 'none',
-            msOverflowStyle: 'none',
             WebkitOverflowScrolling: 'touch'
           }}
         >
-          <style jsx>{`
-            div::-webkit-scrollbar {
-              display: none;
-            }
-          `}</style>
           {problems.map((problem, index) => (
             <div
               key={index}
@@ -74,6 +89,21 @@ export default function Problems() {
             </div>
           ))}
         </div>
+        
+        {/* Pagination Dots */}
+        <div className="flex justify-center gap-2 mt-4">
+          {problems.map((_, index) => (
+            <div
+              key={index}
+              className={`h-1.5 rounded-full transition-all duration-300 ${
+                index === currentIndex
+                  ? 'bg-primary w-6'
+                  : 'bg-gray-300 w-1.5'
+              }`}
+            />
+          ))}
+        </div>
+        
         <p className="text-center text-xs text-gray-500 mt-3">← Swipe to see all problems →</p>
       </div>
 
