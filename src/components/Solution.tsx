@@ -1,3 +1,5 @@
+import { useState, useEffect, useRef } from 'react';
+
 const features = [
   {
     icon: '🎯',
@@ -32,6 +34,25 @@ const features = [
 ];
 
 export default function Solution() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  // Track scroll position to update current index
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+
+    const handleScroll = () => {
+      const scrollPosition = container.scrollLeft;
+      const cardWidth = 280 + 16; // card width + gap
+      const newIndex = Math.round(scrollPosition / cardWidth);
+      setCurrentIndex(newIndex);
+    };
+
+    container.addEventListener('scroll', handleScroll);
+    return () => container.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-primary to-primary-dark text-white relative overflow-hidden">
       {/* Background pattern */}
@@ -57,18 +78,12 @@ export default function Solution() {
         {/* Mobile: Horizontal Scroll */}
         <div className="md:hidden">
           <div 
-            className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory px-4 -mx-4"
+            ref={scrollContainerRef}
+            className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory px-4 -mx-4 scrollbar-hide"
             style={{
-              scrollbarWidth: 'none',
-              msOverflowStyle: 'none',
               WebkitOverflowScrolling: 'touch'
             }}
           >
-            <style jsx>{`
-              div::-webkit-scrollbar {
-                display: none;
-              }
-            `}</style>
             {features.map((feature, index) => (
               <div
                 key={index}
@@ -82,6 +97,21 @@ export default function Solution() {
               </div>
             ))}
           </div>
+          
+          {/* Pagination Dots */}
+          <div className="flex justify-center gap-2 mt-4">
+            {features.map((_, index) => (
+              <div
+                key={index}
+                className={`h-1.5 rounded-full transition-all duration-300 ${
+                  index === currentIndex
+                    ? 'bg-accent w-6'
+                    : 'bg-white/30 w-1.5'
+                }`}
+              />
+            ))}
+          </div>
+          
           <p className="text-center text-xs text-white/60 mt-3">← Swipe to see all features →</p>
         </div>
 
