@@ -33,7 +33,7 @@ const features = [
 
 export default function Solution() {
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-primary to-primary-dark text-white relative overflow-hidden">
+    <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-primary to-primary-dark text-white relative overflow-hidden">
       {/* Background pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0" style={{
@@ -42,29 +42,49 @@ export default function Solution() {
       </div>
       
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="max-w-4xl mx-auto text-center mb-16">
-          <div className="text-accent font-bold text-sm uppercase tracking-wider mb-4">
+        <div className="max-w-4xl mx-auto text-center mb-8 sm:mb-12 lg:mb-16">
+          <div className="text-accent font-bold text-sm uppercase tracking-wider mb-3 sm:mb-4">
             The Solution
           </div>
-          <h2 className="font-display text-4xl sm:text-5xl font-extrabold mb-6 leading-tight">
+          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-4 sm:mb-6 leading-tight">
             We Handle Everything So You Don't Have To
           </h2>
-          <p className="text-xl text-white/90">
+          <p className="text-base sm:text-lg lg:text-xl text-white/90">
             Professional smart lock setup and configuration done 100% remotely in under 24 hours
           </p>
         </div>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Mobile: Horizontal Scroll */}
+        <div className="md:hidden">
+          <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory px-4 -mx-4 scrollbar-hide">
+            {features.map((feature, index) => (
+              <div
+                key={index}
+                className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20 min-w-[280px] snap-center flex-shrink-0"
+              >
+                <div className="text-4xl mb-3">{feature.icon}</div>
+                <h3 className="font-display text-lg font-bold mb-2">
+                  {feature.title}
+                </h3>
+                <p className="text-sm text-white/90 leading-relaxed">{feature.description}</p>
+              </div>
+            ))}
+          </div>
+          <p className="text-center text-xs text-white/60 mt-3">← Swipe to see all features →</p>
+        </div>
+
+        {/* Tablet & Desktop: Grid */}
+        <div className="hidden md:grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {features.map((feature, index) => (
             <div
               key={index}
-              className="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/20 hover:bg-white/15 transition-all duration-300 hover:-translate-y-2"
+              className="bg-white/10 backdrop-blur-md p-5 sm:p-6 lg:p-8 rounded-2xl border border-white/20 hover:bg-white/15 transition-all duration-300 hover:-translate-y-2"
             >
-              <div className="text-5xl mb-4">{feature.icon}</div>
-              <h3 className="font-display text-xl font-bold mb-3">
+              <div className="text-4xl sm:text-5xl mb-3 sm:mb-4">{feature.icon}</div>
+              <h3 className="font-display text-lg sm:text-xl font-bold mb-2 sm:mb-3">
                 {feature.title}
               </h3>
-              <p className="text-white/90 leading-relaxed">{feature.description}</p>
+              <p className="text-sm sm:text-base text-white/90 leading-relaxed">{feature.description}</p>
             </div>
           ))}
         </div>
