@@ -44,9 +44,9 @@ export default function Problems() {
 
     const handleScroll = () => {
       const scrollPosition = container.scrollLeft;
-      const cardWidth = 280 + 16; // card width + gap
-      const newIndex = Math.round(scrollPosition / cardWidth);
-      setCurrentIndex(newIndex);
+      const containerWidth = container.offsetWidth;
+      const newIndex = Math.round(scrollPosition / containerWidth);
+      setCurrentIndex(Math.min(newIndex, problems.length - 1));
     };
 
     container.addEventListener('scroll', handleScroll);
@@ -71,15 +71,20 @@ export default function Problems() {
       <div className="md:hidden">
         <div 
           ref={scrollContainerRef}
-          className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory px-4 -mx-4 scrollbar-hide"
+          className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide"
           style={{
-            WebkitOverflowScrolling: 'touch'
+            WebkitOverflowScrolling: 'touch',
+            paddingLeft: '1rem',
+            paddingRight: '1rem',
+            marginLeft: '-1rem',
+            marginRight: '-1rem'
           }}
         >
           {problems.map((problem, index) => (
             <div
               key={index}
-              className="bg-gray-100 p-6 rounded-2xl border-2 border-transparent min-w-[280px] snap-center flex-shrink-0"
+              className="bg-gray-100 p-6 rounded-2xl border-2 border-transparent snap-center flex-shrink-0"
+              style={{ width: 'calc(100vw - 3rem)' }}
             >
               <div className="text-4xl mb-3">{problem.icon}</div>
               <h3 className="font-display text-lg font-bold mb-2 text-dark">
